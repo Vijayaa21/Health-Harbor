@@ -1,16 +1,12 @@
 from django.shortcuts import render
-from base64 import urlsafe_b64decode
-from email.message import EmailMessage
 from django.shortcuts import redirect,render
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from Health import settings
 
 # Create your views here.
 def home(request):
-    return render(request, "signin.html")
+    return render(request, "index.html")
 
 def signup(request):
 
@@ -48,7 +44,6 @@ def signup(request):
 
         messages.success(request, " Your account has been successfully created!! We have sent you a confirmation mail in you email-id")
 
-        
 
         return redirect('signin')
 
@@ -73,10 +68,6 @@ def signin(request):
     
 
     return render(request, "signin.html")
-
-
-
-
 
 def signout(request):
     logout(request)
