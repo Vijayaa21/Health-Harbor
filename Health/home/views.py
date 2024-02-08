@@ -1,8 +1,11 @@
+from sys import setprofile
 from django.shortcuts import render
 from django.shortcuts import redirect,render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+
+
 
 # Create your views here.
 def home(request):
@@ -43,9 +46,25 @@ def signup(request):
         myuser.save()
 
         messages.success(request, " Your account has been successfully created!! We have sent you a confirmation mail in you email-id")
-
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            full_name = form.cleaned_data['full_name']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            dob = form.cleaned_data['dob']
+            gender = form.cleaned_data['gender']
+            # Process and save form data to the database
+            setprofile.objects.create(
+                username=username,
+                full_name=full_name,
+                email=email,
+                phone=phone,
+                dob=dob,
+                gender=gender
+            )
 
         return redirect('signin')
+    
 
     return render(request, "signup.html")
 
@@ -73,3 +92,6 @@ def signout(request):
     logout(request)
     messages.success(request, "Logged Out Successfully!!")
     return redirect('home')
+
+def profile(request):
+    return render(request, "profile.html")
