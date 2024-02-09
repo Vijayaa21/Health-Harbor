@@ -16,7 +16,7 @@
         <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
+        <script src="https://kit.fontawesome.com/8c341ede2d.js" crossorigin="anonymous"></script>
         <title>Health-Harbour</title>
     </head>
       <style>
@@ -29,6 +29,76 @@
         a:link, a:visited {
           color: white;
         }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Change to your desired button color */
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease; /* Apply a smooth transition to the transform property */
+        }
+
+        /* Button Hover */
+        .btn:hover {
+            transform: scale(1.1); /* Enlarge the button by 10% on hover */
+            color: blue
+            background-color: blue;
+        }
+        /* Style for Navbar Brand Logo */
+        .navbar-brand .logo {
+            width: 40%; /* Adjust the width of the logo */
+        }
+
+        /* Style for Navbar Toggler Icon */
+        .navbar-toggler-icon {
+            color: #333; /* Change the color of the toggler icon */
+        }
+
+        /* Style for Navbar Links */
+        .navbar-nav .nav-link {
+            color: #333; /* Set the default color for navbar links */
+            font-weight: bold; /* Make the text bold */
+            margin-right: 15px; /* Adjust the spacing between navbar links */
+        }
+
+        /* Active Navbar Link */
+        .navbar-nav .nav-link.active {
+            color: #007bff; /* Change the color of the active navbar link */
+        }
+
+        /* Style for Sign Up Button */
+        .navbar-nav .nav-link.sign-up-btn {
+            color: #fff; /* Set the text color */
+            background-color: #007bff; /* Set the background color */
+            padding: 5px 10px; /* Adjust padding */
+            border-radius: 5px; /* Add border radius */
+        }
+
+        /* Style for Sign Out Button */
+        .navbar-nav .nav-link.sign-out-btn {
+            color: #fff; /* Set the text color */
+            background-color: #007bff; /* Set the background color */
+            padding: 5px 10px; /* Adjust padding */
+            border-radius: 5px; /* Add border radius */
+            margin-left: 15px; /* Adjust margin */
+        }
+
+        /* Style for Contact Us Button */
+        .navbar-nav .nav-link.contact-btn {
+            color: #333; /* Set the text color */
+            background-color: #007bff; /* Set the background color */
+            padding: 5px 10px; /* Adjust padding */
+            border-radius: 5px; /* Add border radius */
+        }
+
+        /* Hover effect for Navbar Links */
+        .navbar-nav .nav-link:hover {
+            color: #007bff; /* Change color on hover */
+            text-decoration: none; /* Remove underline on hover */
+        }
+
 
       </style>
   <body>
@@ -53,10 +123,10 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav ">
-          <a class="nav-link active text-dark-75" href="signup">Sign Up</a>
-          <a class="nav-link active text-dark-75" href="/profile">Profile</a>
-          <button class = "btn btn-primary link-light link-offset-2" type="submit"><a href="/signout">SignOut</a></button>
-          <a class="nav-link btn btn-primary text-dark-75" href="/contact">Contact Us</a>
+          <a class="nav-link active text-dark-75 " href="signup"><i class="fas fa-user-plus"></i></a>
+          <a class="nav-link active text-dark-75" href="/profile"><i class="fas fa-user"></i></a>
+          <a class="nav-link active text-dark-75" href="/signout"><i class="fas fa-sign-out-alt"></i></a>
+          <a class="nav-link active text-dark-75" href="/contact"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
     </div>
@@ -64,14 +134,16 @@
 
 
 
-  <div class="d-grid gap-2 col-6 mx-auto p-5">
-    <button class="btn btn-primary p-5" type="button">Store your medical record here..</button>
-
-    
-    
+  <div class="d-grid gap-4 col-6 mx-auto p-5">
+    <button class="btn p-5" type="button">Store your medical record here..</button>
   </div>
-    <div class = " d-flex justify-content-evenly p-5">
-    </div>
+  <div class="d-grid gap-2 col-6 mx-auto p-5">
+    <a href = "/upload" class="btn p-5">Get your diet</a>
+  </div>
+  <div class="d-grid gap-2 col-6 mx-auto p-5">
+    <button class="btn p-5" type="button">Your Diet</button>
+  </div>
+    
   {% else %}
     <div class="container text-center p-5 ml-5 mt-3">
       <div class="row">

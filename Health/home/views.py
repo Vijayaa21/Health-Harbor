@@ -3,6 +3,11 @@ from django.shortcuts import redirect,render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from home.models import UserProfile
+from django.contrib.auth.decorators import login_required
+from .forms import ImageUploadForm
+from .script import drug_name
+
 
 # Create your views here.
 def home(request):
@@ -75,5 +80,17 @@ def signout(request):
     messages.success(request, "Logged Out Successfully!!")
     return redirect('home')
 
+@login_required
 def profile(request):
-    return render(request, "profile.html")
+    return render(request, 'profile.html')
+
+def upload(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            good, bad = drug_name(image)
+            return render(request, 'food.html', {'good': good, 'bad': bad})
+    else:
+        form = ImageUploadForm()
+    return render(request, 'upload.html', {'form': form})

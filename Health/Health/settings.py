@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'home',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,3 +136,6 @@ EMAIL_PORT = 587  # SMTP server port
 EMAIL_HOST_USER = 'vijayam0421@gmail.com'  # Email address used for sending emails
 EMAIL_HOST_PASSWORD = 'Ni$hu2104'  # Email password or app password
 EMAIL_USE_TLS = True  # Enable TLS (Transport Layer Security)
+
+
+LOGIN_URL = 'signin'

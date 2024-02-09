@@ -24,8 +24,7 @@
         body{
           background: #B4D4FF;
         }
-        .container{
-        }
+        
         a:link, a:visited {
           color: white;
         }
@@ -60,15 +59,15 @@
 <body>
     <body>
         <div class="container">
-            <img class="profile-img" src="https://via.placeholder.com/150" alt="Profile Picture">
+            <img class="profile-img" src= "{{ user.UserProfile.image.url }}" alt="Profile Picture">
             <div class="detail-item">
-                <span class="detail-label">Username:</span> <span id="username"></span>
+                <span class="detail-label">Username:</span> <span id="username">{{user.username}}</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Full Name:</span> <span id="fullname"></span>
+                <span class="detail-label">Full Name:</span> <span id="fullname">{{user.fname}}</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Email:</span> <span id="email"></span>
+                <span class="detail-label">Email:</span> <span id="email">{{user.email}}</span>
             </div>
             <div class="detail-item">
                 <span class="detail-label">Phone:</span> <span id="phone"></span>
@@ -80,32 +79,7 @@
                 <span class="detail-label">Gender:</span> <span id="gender"></span>
             </div>
         </div>
-    
-        <script>
-            // Fetch saved user details from localStorage
-            const savedUser = JSON.parse(localStorage.getItem('savedUser'));
-    
-            if (savedUser) {
-                // Set values in the page
-                document.getElementById('username').textContent = savedUser.username;
-                document.getElementById('fullname').textContent = savedUser.fullname;
-                document.getElementById('email').textContent = savedUser.email;
-                document.getElementById('phone').textContent = savedUser.phone;
-                document.getElementById('dob').textContent = savedUser.dob;
-                document.getElementById('gender').textContent = savedUser.gender;
-    
-                // Set image source
-                const profileImg = document.querySelector('.profile-img');
-                if (savedUser.image) {
-                    profileImg.src = savedUser.image;
-                } else {
-                    profileImg.style.display = 'none'; // Hide image if not available
-                }
-    
-                // Convert user details to JSON
-                const userDetailsJson = JSON.stringify(savedUser);
-                console.log(userDetailsJson);
-            }
-        </script>
+        <a href = "index.html">home </a>
+        
     </body>
 </html>
