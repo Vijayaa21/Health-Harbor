@@ -33,18 +33,17 @@
     <div class="container p-5 border border-2 mt-5">
     <h2>Foods to Consume</h2>
     <ul>
-    {% for good_item in good_items %}
-        <li>{{ good_item }}</li>
-    {% endfor %}
-</ul>
-</div>
-    
+        {% for food in good %}
+            <li>{{ food }}</li>
+        {% endfor %}
+    </ul></div>
+
     <div class="container p-5 border border-2 mt-5">
     <h2>Foods to Avoid</h2>
     <ul>
-        {% for bad_item in bad_items %}
-        <li>{{ bad_item }}</li>
-    {% endfor %}
+        {% for food in bad %}
+            <li>{{ food }}</li>
+        {% endfor %}
     </ul>
 </div>
     </div>

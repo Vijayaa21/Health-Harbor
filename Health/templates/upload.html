@@ -50,14 +50,15 @@
         <div class="container p-5 d-flex justify-content-evenly">
         <input type="file" name="image">
         </div>
-        {% if drug_names %}
+
+        {% if drug_name %}
     <h2>Drug Names:</h2>
     <ul>
         {% for drug_name in drug_names %}
             <li>{{ drug_name }}</li>
         {% endfor %}
     </ul>
-{% endif %}
+    {% endif %}
         <div class="container p-5 d-flex justify-content-evenly">
         <button type="submit" class ="btn btn-primary "> Get Your Diet </button>
     </div>

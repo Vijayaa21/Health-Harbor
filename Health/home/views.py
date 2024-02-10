@@ -87,32 +87,13 @@ def profile(request):
 
 def upload(request):
     if request.method == 'POST':
-        action = request.POST.get('action')
-        if action == 'upload':
-            form = ImageUploadForm(request.POST, request.FILES)
-            if form.is_valid():
-                image = form.cleaned_data['image']
-                good_items, bad_items, drug_items = drug_name(image)
-                request.session.setdefault('drug_names', []).extend(drug_items)
-                return render(request, 'upload.html', {'form': form, 'drug_names': request.session['drug_names'], 'good_items': good_items, 'bad_items': bad_items})
-
-        # Handle the form submission for a different purpose
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.cleaned_data['image']
-            good, bad = drug_name(image)
-            return render(request, 'food.html', {'good': good, 'bad': bad})
-            good_items, bad_items, _ = drug_name(image)
-            return render(request, 'food.html', {'good_items': good_items, 'bad_items': bad_items})
+            good_items, bad_items, drug_items = drug_name(image)
+            return render(request, 'food.html', {'good': good_items, 'bad': bad_items})
     else:
         form = ImageUploadForm()
-
     return render(request, 'upload.html', {'form': form})
 
-
-def show_items(request):
-    drug_names = request.session.get('drug_names', [])
-    good_items = request.POST.getlist('good_items')
-    bad_items = request.POST.getlist('bad_items')
-    
-    return render(request, 'food.html', {'drug_names': drug_names, 'good_items': good_items, 'bad_items': bad_items})
+                                                                                                      
