@@ -9,8 +9,6 @@ urlpatterns = [
     path('signout', views.signout, name ='signout'),
     path('profile', views.profile, name = 'profile'),
     path('upload/', views.upload, name='upload_image'),
-
-
-
+    path('getdiet', views.getdiet, name='get_diet'),
 
 ]

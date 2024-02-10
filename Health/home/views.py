@@ -6,9 +6,9 @@ from django.contrib.auth import authenticate, login, logout
 from home.models import UserProfile
 from django.contrib.auth.decorators import login_required
 from .forms import ImageUploadForm
-from .script import drug_name
-
-
+from .script import drug_name,get_dietd
+diet = []
+med =[]
 # Create your views here.
 def home(request):
     return render(request, "index.html")
@@ -84,16 +84,40 @@ def signout(request):
 def profile(request):
     return render(request, 'profile.html')
 
-
 def upload(request):
+    global diet
+    global med
+    drug_names = request.session.get('drug_names', [])  # Initialize drug name information
+
     if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'upload':
+            image = request.FILES.get('image')
+            drug_items = drug_name(image)
+            med.extend(drug_items)  # Assuming the drug name is stored in good_items
+            request.session['drug_name'] = drug_names
+            return render(request, 'upload.html', {'med': med})
+        
+        
+
+
+
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.cleaned_data['image']
-            good_items, bad_items, drug_items = drug_name(image)
-            return render(request, 'food.html', {'good': good_items, 'bad': bad_items})
+            good, bad = drug_names(image)
+            return render(request, 'food.html', {'good': good, 'bad': bad})
+        
     else:
+       
         form = ImageUploadForm()
-    return render(request, 'upload.html', {'form': form})
 
-                                                                                                      
+        med = []
+    
+
+    return render(request, 'upload.html', {'form': form, 'med':med})
+
+def getdiet(request):
+    global med
+    good,bad = get_dietd(med)
+    return render(request, 'food.html', {'good': good, 'bad': bad})

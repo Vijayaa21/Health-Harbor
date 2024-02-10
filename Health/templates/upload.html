@@ -49,18 +49,18 @@
         {% csrf_token %}
         <div class="container p-5 d-flex justify-content-evenly">
         <input type="file" name="image">
+        <button type="submit" class="btn btn-primary" name="action" value="upload"> Upload </button>
         </div>
-
-        {% if drug_name %}
-    <h2>Drug Names:</h2>
-    <ul>
-        {% for drug_name in drug_names %}
-            <li>{{ drug_name }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+        {% if med %}
+        <h2>Medicine Name: </h2>
+        <ul>
+          {% for drug in med %}
+            <li>{{ drug }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
         <div class="container p-5 d-flex justify-content-evenly">
-        <button type="submit" class ="btn btn-primary "> Get Your Diet </button>
+        <button type="submit" class ="btn btn-primary "type="submit"><a href="/getdiet"> Get Your Diet </button>
     </div>
     </form>
 </div>
