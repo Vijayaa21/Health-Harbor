@@ -30,21 +30,23 @@
           color: white;
         }
         .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff; /* Change to your desired button color */
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease; /* Apply a smooth transition to the transform property */
-        }
-
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #2946bf; /* Change to your desired button color */
+          color: #fff;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: transform 0.3s ease; /* Apply a smooth transition to the transform property */
+      }
+      
         /* Button Hover */
         .btn:hover {
             transform: scale(1.1); /* Enlarge the button by 10% on hover */
-            color: blue
-            background-color: blue;
+            color: #fff;
+            background-color: #2946bf; /* Keep the original background color on hover */
+        }
+      
         }
         /* Style for Navbar Brand Logo */
         .navbar-brand .logo {
@@ -98,8 +100,6 @@
             color: #007bff; /* Change color on hover */
             text-decoration: none; /* Remove underline on hover */
         }
-
-
       </style>
   <body>
 
@@ -121,6 +121,9 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <h1 class = "text-center"> Health-Harbour</h1>
+      <br>
+      <h5>Your Health, Our Priority</h5>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav ">
           <a class="nav-link active text-dark-75 " href="signup"><i class="fas fa-user-plus"></i></a>
@@ -135,7 +138,7 @@
 
 
   <div class="d-grid gap-4 col-6 mx-auto p-5">
-    <button class="btn p-5" type="button">Store your medical record here..</button>
+    <button class="btn p-5" type="submit">Store your medical record here..</button>
   </div>
   <div class="d-grid gap-2 col-6 mx-auto p-5">
     <a href = "/upload" class="btn p-5">Get your diet</a>

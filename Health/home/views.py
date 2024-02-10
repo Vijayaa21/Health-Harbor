@@ -85,11 +85,23 @@ def profile(request):
     return render(request, 'profile.html')
 
 def upload(request):
+    drug_names = request.session.get('drug_names', [])  # Initialize drug name information
+
     if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'upload':
+            image = request.FILES.get('image')
+            good_items, bad_items, drug_items = drug_name(image)
+            drug_names.extend(drug_items)  # Assuming the drug name is stored in good_items
+            request.session['drug_name'] = drug_names
+            return render(request, 'upload.html', {'drug_name': drug_names})
+
+
+
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.cleaned_data['image']
-            good, bad = drug_name(image)
+            good, bad = drug_names(image)
             return render(request, 'food.html', {'good': good, 'bad': bad})
     else:
         form = ImageUploadForm()

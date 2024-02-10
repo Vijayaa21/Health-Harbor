@@ -26,5 +26,7 @@ def drug_name(image_file):
     # Extract good and bad items
     good_items = matching_rows['GOOD'].str.split(',').explode().str.strip().tolist()
     bad_items = matching_rows['BAD'].str.split(',').explode().str.strip().tolist()
+    drug_items = matching_rows['DRUG'].str.split(',').explode().str.strip().tolist()
 
-    return good_items, bad_items
+
+    return good_items, bad_items, drug_items
