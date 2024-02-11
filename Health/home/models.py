@@ -19,3 +19,18 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+class medicalRecord (models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='medical_record')
+
+    def __str__(self):
+        return f'{self.user.username} medicalRecord'
+class foodDiet (models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)  
+    good_foods = models.TextField()  
+    bad_foods = models.TextField()
+
+
+    def __str__(self):
+        return f'{self.user.username} foodDiet'
+

@@ -3,7 +3,9 @@ from django.shortcuts import redirect,render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+import requests
 from home.models import UserProfile
+from home.models import foodDiet
 from django.contrib.auth.decorators import login_required
 from .forms import ImageUploadForm
 from .script import drug_name,get_dietd
@@ -120,4 +122,16 @@ def upload(request):
 def getdiet(request):
     global med
     good,bad = get_dietd(med)
+    
+    diet_plan = foodDiet.objects.create(good_foods=good, bad_foods=bad)
     return render(request, 'food.html', {'good': good, 'bad': bad})
+
+def showdiet(request):
+    diet_plan = foodDiet.objects.last()
+    if diet_plan:
+        to_consume = diet_plan.good_foods.split(', ')
+        not_to_consume = diet_plan.bad_foods.split(', ')
+    else:
+        to_consume = ' '
+        not_to_consume = ''
+    return render(request, 'diet.html', {'to_consume': to_consume, 'not_to_consume': not_to_consume})

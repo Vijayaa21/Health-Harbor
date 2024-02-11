@@ -44,12 +44,13 @@
           </div>
         </div>
       </nav>
+
     <div class="container p-5 mt-5">
-    <h1 class = "text-center">Food Recommendations</h1>
+    <h1 class = "text-center">Your Diet</h1>
     <div class="container p-5 border border-2 mt-5">
     <h2>Foods to Consume</h2>
     <ul>
-        {% for food in good %}
+        {% for food in to_consume %}
             <li>{{ food }}</li>
         {% endfor %}
     </ul></div>
@@ -57,7 +58,7 @@
     <div class="container p-5 border border-2 mt-5">
     <h2>Foods to Avoid</h2>
     <ul>
-        {% for food in bad %}
+        {% for food in to_consume %}
             <li>{{ food }}</li>
         {% endfor %}
     </ul>
