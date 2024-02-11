@@ -58,7 +58,7 @@
     <div class="container p-5 border border-2 mt-5">
     <h2>Foods to Avoid</h2>
     <ul>
-        {% for food in to_consume %}
+        {% for food in not_to_consume %}
             <li>{{ food }}</li>
         {% endfor %}
     </ul>
