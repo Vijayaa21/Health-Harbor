@@ -20,7 +20,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 class medicalRecord (models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=False)  
     image = models.ImageField(upload_to='medical_record')
 
     def __str__(self):

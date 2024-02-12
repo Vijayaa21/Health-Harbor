@@ -3,11 +3,9 @@ from django.shortcuts import redirect,render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-import requests
-from home.models import UserProfile
-from home.models import foodDiet
+from home.models import UserProfile, foodDiet, medicalRecord
 from django.contrib.auth.decorators import login_required
-from .forms import ImageUploadForm
+from .forms import ImageUploadForm, medicalRecordForm
 from .script import drug_name,get_dietd
 diet = []
 med =[]
@@ -135,3 +133,23 @@ def showdiet(request):
         to_consume = ' '
         not_to_consume = ''
     return render(request, 'diet.html', {'to_consume': to_consume, 'not_to_consume': not_to_consume})
+
+
+def showMedical(request):
+    if request.method == 'POST':
+        form = medicalRecordForm(request.POST, request.FILES)
+        if form.is_valid():
+            medical_record = form.save(commit=False)  
+            medical_record.user = request.user  
+            medical_record.save() 
+            return redirect('success')  
+    else:
+        form = medicalRecordForm()
+    return render(request, 'medical.html', {'form': form})
+
+def medicalreport(request):
+    medical_records = medicalRecord.objects.filter(user=request.user)
+    return render(request, 'medical_record.html', {'medical_records': medical_records})
+
+def success(request):
+    return render(request, 'sucsess.html')

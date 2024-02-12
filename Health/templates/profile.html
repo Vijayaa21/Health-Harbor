@@ -59,24 +59,24 @@
 <body>
     <body>
         <div class="container">
-            <img class="profile-img" src= "{{ user.UserProfile.image.url }}" alt="Profile Picture">
+            <img class="profile-img" src= "{{ home.Profile.image.url }}" alt="Profile Picture">
             <div class="detail-item">
                 <span class="detail-label">Username:</span> <span id="username">{{user.username}}</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Full Name:</span> <span id="fullname">{{user.fname}}</span>
+                <span class="detail-label">Full Name:</span> <span id="fullname">{{user.first_name}}</span>
             </div>
             <div class="detail-item">
                 <span class="detail-label">Email:</span> <span id="email">{{user.email}}</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Phone:</span> <span id="phone"></span>
+                <span class="detail-label">Phone:</span> <span id="phone">{{UserProfile.phone}}</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Date of Birth:</span> <span id="dob"></span>
+                <span class="detail-label">Date of Birth:</span> <span id="dob">{{UserProfile.dob}}</span>
             </div>
             <div class="detail-item">
-                <span class="detail-label">Gender:</span> <span id="gender"></span>
+                <span class="detail-label">Gender:</span> <span id="gender">{{UserProfile.gender}}</span>
             </div>
         </div>
         <a href = "index.html">home </a>
