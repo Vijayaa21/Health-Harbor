@@ -1,0 +1,4 @@
+__pycache__/*
+Health/__pycache__/
+home/__pycache__/
+*.pyc

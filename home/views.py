@@ -127,8 +127,18 @@ def getdiet(request):
 def showdiet(request):
     diet_plan = foodDiet.objects.last()
     if diet_plan:
-        to_consume = diet_plan.good_foods.split(', ')
-        not_to_consume = diet_plan.bad_foods.split(', ')
+        to_consume = diet_plan.good_foods
+        to_consume = to_consume.replace("'","")
+        to_consume = to_consume.replace("[","")
+        to_consume = to_consume.replace("]","")
+        to_consume = to_consume.split(",")
+        
+        not_to_consume = diet_plan.bad_foods
+        not_to_consume = not_to_consume.replace("'","")
+        not_to_consume = not_to_consume.replace("[","")
+        not_to_consume = not_to_consume.replace("]","")
+        not_to_consume = not_to_consume.split(",")
+        
     else:
         to_consume = ' '
         not_to_consume = ''
