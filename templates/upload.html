@@ -22,11 +22,10 @@
     <title>Upload Image</title>
     <style>
         body{
-          background: #B4D4FF;
+          background: #D8F0E3;
+          color: black;
         }
-        .container{
-          background-color: #EEF5FF;
-        }
+        
         /* Style for file input element */
         input[type="file"] {
             border: 1px solid #ccc; /* Add border */
@@ -36,13 +35,25 @@
             border-radius: 5px; /* Add border radius */
         }
 
-        /* Hover effect for file input element */
         input[type="file"]:hover {
-            border-color: #007bff; /* Change border color on hover */
+            border-color: success; 
         }
         a:link, a:visited {
-          color: white;
           text-decoration: none;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease; 
+        }
+
+        .btn:hover {
+            transform: scale(1.1); 
+            color: white;
         }
 </style>
 </head>
@@ -63,13 +74,14 @@
       </div>
     </div>
   </nav>
-    <div class="container p-5 mt-5">
+
+    <div class="container border border-dark rounded-2 p-5 mt-5 pb-5">
     <form method="post" enctype="multipart/form-data">
         <h1 class = "text-center p-3">Upload Image</h1>
         {% csrf_token %}
-        <div class="container p-5 d-flex justify-content-evenly">
-        <input type="file" name="image">
-        <button type="submit" class="btn btn-primary" name="action" value="upload"> Upload </button>
+        <div class="p-5 d-flex justify-content-evenly input-group mb-3">
+        <input type="file" class="form-control" id="inputGroupFile02" name="image">
+        <button type="submit" class="btn btn-success" name="action" value="upload"> Upload </button>
         </div>
         {% if med %}
         <h2>Medicine Name: </h2>
@@ -79,10 +91,121 @@
           {% endfor %}
         </ul>
         {% endif %}
-        <div class="container p-5 d-flex justify-content-center">
-        <button type="submit" class ="btn btn-primary "type="submit"><a href="/getdiet"> Get Your Diet </button>
+        <div class="d-flex justify-content-center">
+        <button type="submit" class ="btn btn-success "type="submit"> <a href="/getdiet" class = "text-light">Get Your Diet </a></button>
     </div>
     </form>
 </div>
+
+<div class="container p-5 text-dark">
+  <div class="row justify-content-center pb-5 mb-3">
+    <div class="col-md-7 heading-section text-center ftco-animate">
+      <h2>How it works?</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+      <div class="d-block text-center">
+        <div class="icon d-flex justify-content-center align-items-center">
+          <span class="fa-solid fa-bowl-food"></span>
+        </div>
+        <div class="media-body p-2 mt-3">
+          <h3 class="heading">Follow the program</h3>
+          <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+        </div>
+      </div>      
+    </div>
+    <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+      <div class="d-block text-center">
+        <div class="icon d-flex justify-content-center align-items-center">
+          <span class="fa-solid fa-user-doctor"></span>
+        </div>
+        <div class="media-body p-2 mt-3">
+          <h3 class="heading">Work for result</h3>
+          <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+        </div>
+      </div>    
+    </div>
+    <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+      <div class="d-block text-center">
+        <div class="icon d-flex justify-content-center align-items-center">
+          <span class="fa-solid fa-plate-wheat"></span>
+        </div>
+        <div class="media-body p-2 mt-3">
+          <h3 class="heading">Eat healthy food</h3>
+          <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+        </div>
+      </div>      
+    </div>
+    <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+      <div class="d-block text-center">
+        <div class="icon d-flex justify-content-center align-items-center">
+          <span class="fa-solid fa-hands-holding"></span>
+        </div>
+        <div class="media-body p-2 mt-3">
+          <h3 class="heading">Enjoy your life</h3>
+          <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container p-5 pb-5">
+  <div class="row justify-content-center pb-5 mb-3">
+    <div class="col-md-7 heading-section text-center ftco-animate text-dark">
+      <h2>Latest news from our blog</h2>
+      <span class="subheading">News &amp; Blog</span>
+    </div>
+  </div>
+  <div class="row d-flex">
+    <div class="col-md-4 d-flex ftco-animate text-dark">
+      <div class="blog-entry align-self-stretch">
+        <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
+        </a>
+        <div class="text text-dark mt-3">
+          <div class="meta mb-2">
+            <div><a href="#">January 30, 2020</a></div>
+            <div><a href="#">Admin</a></div>
+            <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+          </div>
+          <h3 class="heading text-dark"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex ftco-animate">
+      <div class="blog-entry align-self-stretch">
+        <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_2.jpg');">
+        </a>
+        <div class="text mt-3">
+          <div class="meta mb-2">
+            <div><a href="#">January 30, 2020</a></div>
+            <div><a href="#">Admin</a></div>
+            <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+          </div>
+          <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex ftco-animate">
+      <div class="blog-entry align-self-stretch">
+        <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
+        </a>
+        <div class="text mt-3">
+          <div class="meta mb-2">
+            <div><a href="#">January 30, 2020</a></div>
+            <div><a href="#">Admin</a></div>
+            <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+          </div>
+          <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

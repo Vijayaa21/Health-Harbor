@@ -15,7 +15,6 @@ class UserProfile(models.Model):
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
-    # Add any other fields you need for the user profile
 
     def __str__(self):
         return f'{self.user.username} Profile'

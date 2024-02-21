@@ -3,12 +3,13 @@ from django.shortcuts import redirect,render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from home.models import UserProfile, foodDiet, medicalRecord
+from home.models import foodDiet, medicalRecord
 from django.contrib.auth.decorators import login_required
 from .forms import ImageUploadForm, medicalRecordForm
 from .script import drug_name,get_dietd
 diet = []
 med =[]
+
 # Create your views here.
 def home(request):
     return render(request, "index.html")
@@ -49,9 +50,7 @@ def signup(request):
 
         messages.success(request, " Your account has been successfully created!! We have sent you a confirmation mail in you email-id")
 
-
         return redirect('signin')
-    
 
     return render(request, "signup.html")
 
@@ -82,6 +81,7 @@ def signout(request):
 
 @login_required
 def profile(request):
+    
     return render(request, 'profile.html')
 
 def upload(request):
@@ -98,10 +98,6 @@ def upload(request):
             request.session['drug_name'] = drug_names
             return render(request, 'upload.html', {'med': med})
         
-        
-
-
-
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             image = form.cleaned_data['image']
@@ -111,10 +107,8 @@ def upload(request):
     else:
        
         form = ImageUploadForm()
-
         med = []
     
-
     return render(request, 'upload.html', {'form': form, 'med':med})
 
 def getdiet(request):
@@ -147,12 +141,13 @@ def showdiet(request):
 
 def showMedical(request):
     if request.method == 'POST':
-        form = medicalRecordForm(request.POST, request.FILES)
-        if form.is_valid():
-            medical_record = form.save(commit=False)  
-            medical_record.user = request.user  
-            medical_record.save() 
-            return redirect('success')  
+        try:
+            form = medicalRecordForm(request.POST, request.FILES)
+            if form.is_valid(): 
+                form.save() 
+                return render(request, 'medical.html')  
+        except Exception as e:
+            return render(request, 'medical.html', {'error_message': str(e)})
     else:
         form = medicalRecordForm()
     return render(request, 'medical.html', {'form': form})

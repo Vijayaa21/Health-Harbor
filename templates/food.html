@@ -44,24 +44,89 @@
           </div>
         </div>
       </nav>
+
     <div class="container p-5 mt-5">
     <h1 class = "text-center">Food Recommendations</h1>
     <div class="container p-5 border border-2 mt-5">
-    <h2>Foods to Consume</h2>
-    <ul>
-        {% for food in good %}
-            <li>{{ food }}</li>
-        {% endfor %}
-    </ul></div>
-
-    <div class="container p-5 border border-2 mt-5">
-    <h2>Foods to Avoid</h2>
-    <ul>
-        {% for food in bad %}
-            <li>{{ food }}</li>
-        {% endfor %}
-    </ul>
-</div>
+    <div class="container p-5 mt-5">
+      <div class="row">
+      <div class="dropdown-center col-6 d-grid gap-2 mx-auto">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          food to consume
+        </button>
+        <ul class="dropdown-menu">
+          {% for food in good %}
+              <li class="dropdown-item">{{ food }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="dropdown col-6 d-grid gap-2 mx-auto">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          food to Avoid
+        </button>
+        <ul class="dropdown-menu">
+          {% for food in bad %}
+              <li class="dropdown-item">{{ food }}</li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
+    </div>
+    </div>
+  </div>
+  
+  <div class="container p-5 text-dark">
+    <div class="row justify-content-center pb-5 mb-3">
+      <div class="col-md-7 heading-section text-center ftco-animate">
+        <h2>How it works?</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+        <div class="d-block text-center">
+          <div class="icon d-flex justify-content-center align-items-center">
+            <span class="fa-solid fa-bowl-food"></span>
+          </div>
+          <div class="media-body p-2 mt-3">
+            <h3 class="heading">Follow the program</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+        <div class="d-block text-center">
+          <div class="icon d-flex justify-content-center align-items-center">
+            <span class="fa-solid fa-user-doctor"></span>
+          </div>
+          <div class="media-body p-2 mt-3">
+            <h3 class="heading">Work for result</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+          </div>
+        </div>    
+      </div>
+      <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+        <div class="d-block text-center">
+          <div class="icon d-flex justify-content-center align-items-center">
+            <span class="fa-solid fa-plate-wheat"></span>
+          </div>
+          <div class="media-body p-2 mt-3">
+            <h3 class="heading">Eat healthy food</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+        <div class="d-block text-center">
+          <div class="icon d-flex justify-content-center align-items-center">
+            <span class="fa-solid fa-hands-holding"></span>
+          </div>
+          <div class="media-body p-2 mt-3">
+            <h3 class="heading">Enjoy your life</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+          </div>
+        </div>      
+      </div>
+    </div>
+  </div>
 </body>
 </html>

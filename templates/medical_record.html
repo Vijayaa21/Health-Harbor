@@ -1,15 +1,19 @@
-<!-- medical_records.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Medical Records</title>
 </head>
 <body>
-    <h2>Medical Records</h2>
-    <ul>
-        {% for record in medical_records %}
-            <li><img src="{{ record.image.url }}" alt="Medical Record"></li>
+    <h1>Uploaded Images</h1>
+    <div class="image-gallery">
+        {% for image in images %}
+            <div class="image">
+                <h2>{{ image.title }}</h2>
+                <img src="{{ image.image.url }}" alt="{{ image.title }}">
+            </div>
+        {% empty %}
+            <p>No images uploaded yet.</p>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>
