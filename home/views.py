@@ -3,10 +3,11 @@ from django.shortcuts import redirect,render
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from home.models import foodDiet, medicalRecord
+from home.models import foodDiet, medicalRecord, Contact
 from django.contrib.auth.decorators import login_required
 from .forms import ImageUploadForm, medicalRecordForm
 from .script import drug_name,get_dietd
+from datetime import datetime
 diet = []
 med =[]
 
@@ -33,7 +34,7 @@ def signup(request):
             return redirect('home')
         
         if len(username)>10:
-            messages(request, 'username must be under 10 characters')
+            messages(request, 'Username must be under 10 characters')
 
         if password != confirmpw:
             messages.error(request, "Password didn't match!")
@@ -158,3 +159,13 @@ def medicalreport(request):
 
 def success(request):
     return render(request, 'sucsess.html')
+
+def contact(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        desc = request.POST.get('desc')
+        contact = Contact(name=name, email=email, desc=desc, date = datetime.today())
+        contact.save()
+        messages.success(request, 'Your message has been sent!!')
+    return render(request, 'contactus.html')

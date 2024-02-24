@@ -15,6 +15,8 @@ urlpatterns = [
     path('showdiet', views.showdiet, name='showdiet'),
     path('showMedical', views.showMedical, name='showMedical'),
     path('medicalreport/', views.medicalreport, name='medicalreport'),
+    path('contact', views.contact, name='contact'), 
+
 ]
 
 if settings.DEBUG:
