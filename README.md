@@ -20,20 +20,32 @@ The Health Management System is an AI-driven solution designed to revolutionize 
 6. Easy-to-Understand Reports: Presents clinical reports in simple language for user-friendly understanding.
 
 7. User-centric Design: Focused on empowering users to maintain a balanced, proactive lifestyle through insightful health management.
-
 ## Tech Stack
 
 
-**Frontend :**   css3   javascript   bootstrap
 
-**Backend :** python
+**Frontend :** HTML  CSS   Javascript   Bootstrap
 
-**Framework :** django
+**Backend :** Python
+
+**Framework :** Django
 ## Prerequisites
 
 **Python 3.x**
 
 **Google Cloud Platform Account**
+## Python package Installations
+
+```bash
+  pip install -q -U google-generativeai
+```
+```bash
+  pip install pandas
+```
+```bash
+  pip install pillow
+```
+
 ## Run Using
 
 To run project, run the following command
