@@ -37,6 +37,9 @@ The Health Management System is an AI-driven solution designed to revolutionize 
 ## Python package Installations
 
 ```bash
+  pip install django
+```
+```bash
   pip install -q -U google-generativeai
 ```
 ```bash
